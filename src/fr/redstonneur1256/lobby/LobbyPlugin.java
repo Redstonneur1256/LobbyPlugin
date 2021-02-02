@@ -5,10 +5,10 @@ import arc.files.Fi;
 import arc.util.CommandHandler;
 import arc.util.Log;
 import arc.util.serialization.Json;
+import mindustry.entities.type.Player;
 import mindustry.game.EventType;
 import mindustry.gen.Call;
-import mindustry.gen.Player;
-import mindustry.mod.Plugin;
+import mindustry.plugin.Plugin;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -45,7 +45,7 @@ public class LobbyPlugin extends Plugin {
                 return;
             }
 
-            Call.connect(player.con, configuration.lobbyAddress, configuration.lobbyPort);
+            Call.onConnect(player.con, configuration.lobbyAddress, configuration.lobbyPort);
         };
 
         handler.register("lobby", "Connects you to the lobby server", command);

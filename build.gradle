@@ -9,7 +9,7 @@ group 'fr.redstonneur1256'
 version '1.0'
 
 ext.versions = new DefaultExtraPropertiesExtension()
-ext.versions.mindustry = 'v123'
+ext.versions.mindustry = 'v104'
 
 allprojects {
     apply plugin: 'java'
