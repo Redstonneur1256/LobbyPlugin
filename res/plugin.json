@@ -1,0 +1,7 @@
+{
+  "name": "Lobby",
+  "description": "Adding /lobby and /hub commands",
+  "version": 1.0,
+  "author": "Redstonneur1256",
+  "main": "fr.redstonneur1256.lobby.LobbyPlugin"
+}

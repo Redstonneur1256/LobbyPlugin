@@ -1,0 +1,48 @@
+import org.gradle.internal.extensibility.DefaultExtraPropertiesExtension
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group 'fr.redstonneur1256'
+version '1.0'
+
+ext.versions = new DefaultExtraPropertiesExtension()
+ext.versions.mindustry = 'v123'
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    configurations {
+        provided
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url = "https://jitpack.io" }
+    }
+
+    jar.archiveFileName = "${name}.jar"
+    shadowJar.archiveFileName = jar.archiveFileName
+
+    compileJava.options.encoding = 'UTF-8'
+    sourceSets.main.java.srcDirs = ["src/"]
+    sourceSets.main.resources.srcDirs = ["res/"]
+    sourceSets.test.java.srcDirs = []
+    sourceSets.test.resources.srcDirs = []
+    compileJava.sourceCompatibility = 1.8
+    compileJava.targetCompatibility = 1.8
+}
+
+if(subprojects.size() != 0) {
+    sourceSets.main.java.srcDirs = []
+    sourceSets.main.resources.srcDirs = []
+}
+
+dependencies {
+    compileOnly "com.github.Anuken.Arc:arc-core:${versions.mindustry}"
+    compileOnly "com.github.Anuken.Mindustry:core:${versions.mindustry}"
+}
